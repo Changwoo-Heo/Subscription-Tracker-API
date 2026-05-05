@@ -76,34 +76,6 @@ const getAllSubscription = async(req, res, next) => {
     }
 }
 
-const getAllSubscriptionUser = async(req, res, next) => {
-    try{
-        if(req.user.id != req.params.id) {
-            const error = new Error('You are not the user of the account!');
-            error.statusCode = 401;
-            throw error;
-        }
-
-        const user = await User.findById(req.params.id);
-
-        if(!user) {
-            const error = new Error("User with the following id doesn't exist");
-            error.statusCode = 404;
-            throw error;
-        }
-
-        const allSubscriptions = await Subscription
-                                       .find({user: req.params.id});
-
-        res.status(200).json({
-            success: "true",
-            data: allSubscriptions
-        });
-
-    } catch(error) {
-        next(error);
-    }
-}
 
 const deleteAllSubscription = async(req, res, next) => {
     try {
@@ -258,8 +230,7 @@ const getUpcomingRenewalSubscriptions = async(req, res, next) => {
 
 export { createSubscription, 
          getSubscription, 
-         getAllSubscription,
-         getAllSubscriptionUser, 
+         getAllSubscription, 
          deleteAllSubscription, 
          deleteSpecificSubscription, 
          updateSubscription, 
