@@ -39,20 +39,20 @@ app.get("/", (req, res) => {
     res.json({message: 'Welcome to the Subscription Tracker API!'});
 });
 
-if(process.env.NODE_ENV !== 'production') {
-    const server = app.listen(PORT, async () => {
-        console
-        .log(`Subcription Tracker API is running on http://localhost:${PORT}`);
+// if(process.env.NODE_ENV !== 'production') {
+//     const server = app.listen(PORT, async () => {
+//         console
+//         .log(`Subcription Tracker API is running on http://localhost:${PORT}`);
 
-        await connectToDatabase();
-    });
-} else {
-    try {
-        console.log("DB URI Exists: ", !!process.env.DB_URI);
-        await connectToDatabase();
-    } catch(error) {
-        throw error;
-    }
-}
+//         await connectToDatabase();
+//     });
+// } else {
+//     try {
+//         console.log("DB URI Exists: ", !!process.env.DB_URI);
+//         await connectToDatabase();
+//     } catch(error) {
+//         throw error;
+//     }
+// }
 
 export default app;
