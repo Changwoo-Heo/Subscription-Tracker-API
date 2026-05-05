@@ -78,7 +78,7 @@ const getAllSubscription = async(req, res, next) => {
 
 const getAllSubscriptionUser = async(req, res, next) => {
     try{
-        if(User.id != req.params.id) {
+        if(req.user.id != req.params.id) {
             const error = new Error('You are not the user of the account!');
             error.statusCode = 401;
             throw error;
