@@ -54,7 +54,7 @@ app.get("/", (req, res) => {
 //         throw error;
 //     }
 // }
-
+console.log("DB_URI exists:", !!process.env.DB_URI);
 await connectToDatabase();
 
 export default app;
