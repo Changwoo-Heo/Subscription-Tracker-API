@@ -55,4 +55,6 @@ app.get("/", (req, res) => {
 //     }
 // }
 
+await connectToDatabase();
+
 export default app;

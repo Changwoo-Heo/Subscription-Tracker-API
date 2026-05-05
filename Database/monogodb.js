@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 import { DB_URI, NODE_ENV } from '../config/env.js';
 
 if (!DB_URI) {
-    throw new Error('Please define the MONGODB_URI environment variable inside .env<development/productino>.local');
+    const error = new Error('Please define the MONGODB_URI');
+    error.statusCode = 404;
+    throw error;
+    // throw new Error('Please define the MONGODB_URI environment variable inside .env<development/productino>.local');
     // return res.status(400).json()
 }
 
