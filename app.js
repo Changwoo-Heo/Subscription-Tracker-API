@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false}));
 // reads cookies from incoming request so it can store datas of your users
 app.use(cookieParser());
 
-app.use(arcjetMiddleware);
+// app.use(arcjetMiddleware);
 
 // adding base URLS in front of the site depending on the diff routes users 
 // want to use
