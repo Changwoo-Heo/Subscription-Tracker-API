@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { createSubscription, 
          getSubscription, 
          getAllSubscription,
+         getAllSubscriptionUser,
          deleteAllSubscription,
          deleteSpecificSubscription,
          updateSubscription,
@@ -16,6 +17,7 @@ const subscriptionRouter = Router();
 subscriptionRouter.post('/', authorize, createSubscription);
 subscriptionRouter.get('/user/:id', authorize, getSubscription);
 subscriptionRouter.get('/', getAllSubscription);
+subscriptionRouter.get('/:id', getAllSubscriptionUser);
 subscriptionRouter.delete('/delete-all/:id', authorize, deleteAllSubscription);
 subscriptionRouter.delete('/delete/:id/:sub_Id', authorize, 
                            deleteSpecificSubscription);
