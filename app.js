@@ -39,12 +39,19 @@ app.get("/", (req, res) => {
     res.json({message: 'Welcome to the Subscription Tracker API!'});
 });
 
-
-const server = app.listen(PORT, async () => {
-    console
-    .log(`Subcription Tracker API is running on http://localhost:${PORT}`);
-
-    await connectToDatabase();
-});
+if(process.env.NODE_ENV !== 'production') {
+    const server = app.listen(PORT, async () => {
+        console
+        .log(`Subcription Tracker API is running on http://localhost:${PORT}`);
+    
+        await connectToDatabase();
+    });
+} else {
+    try {
+        await connectToDatabase();
+    } catch(error) {
+        throw error;
+    }
+}
 
 export default app;
